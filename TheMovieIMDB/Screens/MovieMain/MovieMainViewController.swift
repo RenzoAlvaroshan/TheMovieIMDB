@@ -6,23 +6,35 @@
 //
 
 import UIKit
+import IGListKit
 
 final class MovieMainViewController: UIViewController {
 	
 	// MARK: - Properties
 	
+	private let viewModel: MovieMainViewModel
+	
+	// MARK: - Initialization
+	
+	init(viewModel: MovieMainViewModel) {
+		self.viewModel = viewModel
+		super.init(nibName: nil, bundle: nil)
+	}
+	
+	required init?(coder: NSCoder) {
+		fatalError("init(coder:) has not been implemented")
+	}
+	
 	// MARK: - Lifecycle
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		configureUI()
+		
 	}
 	
 	// MARK: - Selectors
 	
 	// MARK: - Helpers
 	
-	private func configureUI() {
-		view.backgroundColor = .systemRed
-	}
+	
 }
