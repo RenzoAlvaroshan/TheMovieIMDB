@@ -12,6 +12,7 @@ target 'TheMovieIMDB' do
   pod 'RxRelay'
   pod 'SkeletonView'
   pod 'SnapKit'
+  pod 'Kingfisher'
 
   target 'TheMovieIMDBTests' do
     inherit! :search_paths
