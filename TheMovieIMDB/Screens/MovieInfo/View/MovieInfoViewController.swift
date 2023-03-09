@@ -117,7 +117,9 @@ final class MovieInfoViewController: UIViewController {
 		
 		view.addSubview(userReviewsTableView)
 		userReviewsTableView.snp.makeConstraints { make in
-			make.top.equalTo(userReviewsTitleLabel.snp.bottom).offset(8)
+			make.top.equalTo(userReviewsTitleLabel.snp.bottom)
+			make.leading.trailing.equalToSuperview()
+			make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
 		}
 	}
 	

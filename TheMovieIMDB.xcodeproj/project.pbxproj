@@ -259,8 +259,8 @@
 		83DD7F7429B99B5500871869 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				837FF37929B73D6E002F4074 /* MovieInfoViewController.swift */,
 				83DD7F7529B9AF8700871869 /* UserReviewCell.swift */,
+				837FF37929B73D6E002F4074 /* MovieInfoViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
