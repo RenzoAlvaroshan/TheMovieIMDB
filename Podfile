@@ -13,6 +13,7 @@ target 'TheMovieIMDB' do
   pod 'SkeletonView'
   pod 'SnapKit'
   pod 'Kingfisher'
+  pod "youtube-ios-player-helper"
 
   target 'TheMovieIMDBTests' do
     inherit! :search_paths

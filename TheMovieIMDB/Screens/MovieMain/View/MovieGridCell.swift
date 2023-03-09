@@ -12,6 +12,8 @@ import Kingfisher
 final class MovieGridCell: UICollectionViewCell {
 	
 	// MARK: - Properties
+	
+	static let reuseIdentifier = "MovieGridCell"
 
 	private let imageView: UIImageView = {
 		let imageView = UIImageView()
@@ -37,8 +39,8 @@ final class MovieGridCell: UICollectionViewCell {
 			make.edges.equalToSuperview()
 		}
 		titleLabel.snp.makeConstraints { make in
-			make.leading.trailing.equalToSuperview().inset(10)
-			make.bottom.equalToSuperview().inset(10)
+			make.leading.equalTo(imageView.snp.leading).offset(10)
+			make.bottom.equalTo(imageView.snp.bottom).inset(10)
 		}
 	}
 
@@ -49,7 +51,7 @@ final class MovieGridCell: UICollectionViewCell {
 	// MARK: - Configuration
 
 	func configure(with movie: Movie) {
-		let url = URL(string: movie.posterPath ?? "")
+		let url = URL(string: "https://image.tmdb.org/t/p/w500\(movie.posterPath ?? "")")
 		imageView.kf.setImage(
 			with: url,
 			options: [
