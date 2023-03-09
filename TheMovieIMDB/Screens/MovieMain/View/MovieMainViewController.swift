@@ -18,11 +18,8 @@ final class MovieMainViewController: UIViewController {
 	private let disposeBag: DisposeBag = DisposeBag()
 	
 	private lazy var collectionView: UICollectionView = {
-		let layout = PinterestLayout()
-		layout.contentPadding = .init(horizontal: 8, vertical: 8)
-		layout.cellsPadding = .init(horizontal: 8, vertical: 8)
-		layout.columnsCount = 2
-		layout.delegate = self
+		let layout = UICollectionViewFlowLayout()
+		layout.scrollDirection = .vertical
 
 		let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
 		collectionView.backgroundColor = .systemBackground
@@ -111,7 +108,7 @@ extension MovieMainViewController: UICollectionViewDataSource {
 
 // MARK: - UICollectionViewDelegate
 
-extension MovieMainViewController: UICollectionViewDelegate {
+extension MovieMainViewController: UICollectionViewDelegateFlowLayout {
 	
 	func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 		
@@ -139,16 +136,11 @@ extension MovieMainViewController: UICollectionViewDelegate {
 			isLoading = false
 		}
 	}
-}
-
-// MARK: - PinterestLayoutDelegate
-
-extension MovieMainViewController: PinterestLayoutDelegate {
 	
-	func cellSize(indexPath: IndexPath) -> CGSize {
+	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
 		
 		let width = (collectionView.frame.width / 2) - 10
 		
-		return CGSize(width: width, height: 200)
+		return CGSize(width: width, height: 250)
 	}
 }

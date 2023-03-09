@@ -153,7 +153,6 @@ final class MovieInfoViewController: UIViewController {
 	}
 	
 	func configureLabel(overview: String) {
-		
 		movieOverviewContentLabel.text = overview
 	}
 }
@@ -163,7 +162,6 @@ final class MovieInfoViewController: UIViewController {
 extension MovieInfoViewController: UITableViewDataSource {
 	
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		print("NUMBER OF ROWS: \(viewModel.userReviews.value.count)")
 		return viewModel.userReviews.value.count
 	}
 	
