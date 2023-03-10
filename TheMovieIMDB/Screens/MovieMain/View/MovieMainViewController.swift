@@ -8,6 +8,7 @@
 import UIKit
 import SnapKit
 import RxSwift
+import SkeletonView
 
 protocol MovieMainViewControllerDelegate: AnyObject {
 	func showError(_ error: Error)

@@ -36,28 +36,46 @@ final class MovieGridCell: UICollectionViewCell {
 	
 	override init(frame: CGRect) {
 		super.init(frame: frame)
-		contentView.addSubview(imageView)
-		contentView.addSubview(titleLabel)
-		imageView.snp.makeConstraints { make in
-			make.centerX.equalTo(contentView.snp.centerX)
-			make.height.equalTo(200)
-		}
-		titleLabel.snp.makeConstraints { make in
-			make.leading.equalTo(contentView.snp.leading).offset(10)
-			make.trailing.equalTo(contentView.snp.trailing).inset(10)
-			make.top.equalTo(imageView.snp.bottom).offset(10)
-		}
+		configureCell()
+	}
+	
+	override func prepareForReuse() {
+		imageView.image = nil
+		imageView.isSkeletonable = true
 	}
 	
 	required init?(coder: NSCoder) {
 		fatalError("init(coder:) has not been implemented")
 	}
 	
-	// MARK: - Configuration
+	// MARK: - Private Methods
+	
+	private func configureCell() {
+		addSubview(imageView)
+		addSubview(titleLabel)
+		imageView.snp.makeConstraints { make in
+			make.centerX.equalTo(snp.centerX)
+			make.leading.equalTo(snp.leading).offset(16)
+			make.trailing.equalTo(snp.trailing).inset(16)
+			make.height.equalTo(200)
+		}
+		titleLabel.snp.makeConstraints { make in
+			make.leading.equalTo(snp.leading).offset(10)
+			make.trailing.equalTo(snp.trailing).inset(10)
+			make.top.equalTo(imageView.snp.bottom).offset(10)
+		}
+	}
+	
+	// MARK: - Public Methods
 	
 	func configure(with movie: Movie) {
-		showLoadingAnimation()
 		let url = URL(string: "https://image.tmdb.org/t/p/w500\(movie.posterPath ?? "")")
+		loadImage(with: url)
+		titleLabel.text = movie.originalTitle
+	}
+	
+	func loadImage(with url: URL?) {
+		showLoadingAnimation()
 		imageView.kf.setImage(
 			with: url,
 			options: [
@@ -72,7 +90,6 @@ final class MovieGridCell: UICollectionViewCell {
 				self?.hideLoadingAnimation()
 			}
 		}
-		titleLabel.text = movie.originalTitle
 	}
 	
 	func showLoadingAnimation() {
