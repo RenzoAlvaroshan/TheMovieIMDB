@@ -38,12 +38,6 @@ final class UserReviewCell: UITableViewCell {
 		return view
 	}()
 	
-	private let separatorView: UIView = {
-		let view = UIView()
-		view.backgroundColor = UIColor.systemGray3
-		return view
-	}()
-	
 	// MARK: - Initialization
 	
 	override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -64,7 +58,6 @@ final class UserReviewCell: UITableViewCell {
 		contentView.addSubview(containerView)
 		containerView.addSubview(authorLabel)
 		containerView.addSubview(contentLabel)
-		containerView.addSubview(separatorView)
 	}
 	
 	private func configureConstraints() {
@@ -81,12 +74,7 @@ final class UserReviewCell: UITableViewCell {
 		contentLabel.snp.makeConstraints { make in
 			make.top.equalTo(authorLabel.snp.bottom).offset(8)
 			make.leading.trailing.equalToSuperview().inset(8)
-			make.bottom.equalTo(separatorView.snp.top).offset(-8)
-		}
-		
-		separatorView.snp.makeConstraints { make in
-			make.leading.trailing.bottom.equalToSuperview()
-			make.height.equalTo(1)
+			make.bottom.equalToSuperview().inset(8)
 		}
 	}
 	

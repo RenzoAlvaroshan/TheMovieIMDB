@@ -9,6 +9,10 @@ import UIKit
 import SnapKit
 import RxSwift
 
+protocol MovieMainViewControllerDelegate: AnyObject {
+	func showError(_ error: Error)
+}
+
 final class MovieMainViewController: UIViewController {
 	
 	// MARK: - Properties
@@ -54,6 +58,7 @@ final class MovieMainViewController: UIViewController {
 		configureCollectionView()
 		observeViewModel()
 		loadMoreMovies()
+		viewModel.delegate = self
 	}
 	
 	// MARK: - Private Methods
@@ -83,6 +88,18 @@ final class MovieMainViewController: UIViewController {
 	
 	private func loadMoreMovies() {
 		viewModel.loadMoreMovies()
+	}
+}
+
+// MARK: - MovieMainViewControllerDelegate
+
+extension MovieMainViewController: MovieMainViewControllerDelegate {
+	func showError(_ error: Error) {
+		let alert = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .alert)
+		alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
+			self.loadMoreMovies()
+		}))
+		present(alert, animated: true)
 	}
 }
 
@@ -119,7 +136,7 @@ extension MovieMainViewController: UICollectionViewDelegateFlowLayout {
 		
 		DispatchQueue.main.async {
 			let infoVC = MovieInfoViewController(viewModel: self.infoViewModel)
-			infoVC.loadVideo(for: movieTitle)
+			infoVC.movieTitle = movieTitle
 			infoVC.configureLabel(overview: movieOverview)
 			infoVC.getMovieReviews(for: movie.id)
 			self.navigationController?.pushViewController(infoVC, animated: true)

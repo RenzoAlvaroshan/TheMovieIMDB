@@ -12,6 +12,8 @@ final class MovieMainViewModel {
 	
 	// MARK: - Properties
 	
+	weak var delegate: MovieMainViewControllerDelegate?
+	
 	let movies: BehaviorRelay<[Movie]> = BehaviorRelay<[Movie]>(value: [])
 
 //	let adapter: ListAdapter? = nil
@@ -41,6 +43,7 @@ final class MovieMainViewModel {
 				self.currentPage = nextPage
 			case .failure(let error):
 				print("Failed to load more movies: \(error)")
+				self.delegate?.showError(error)
 			}
 		}
 	}

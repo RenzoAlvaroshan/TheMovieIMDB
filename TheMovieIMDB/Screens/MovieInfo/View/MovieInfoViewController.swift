@@ -10,9 +10,19 @@ import SnapKit
 import WebKit
 import RxSwift
 
+protocol MovieInfoViewControllerDelegate: AnyObject {
+	func showError(_ error: Error)
+}
+
 final class MovieInfoViewController: UIViewController {
 	
 	// MARK: - Properties
+	
+	var movieTitle: String? {
+		didSet {
+			loadVideo()
+		}
+	}
 	
 	private let webView: WKWebView = WKWebView()
 	
@@ -134,8 +144,8 @@ final class MovieInfoViewController: UIViewController {
 	
 	// MARK: - Public Methods
 	
-	func loadVideo(for movieTitle: String) {
-		viewModel.searchVideo(for: movieTitle) { [weak self] result in
+	func loadVideo() {
+		viewModel.searchVideo(for: self.movieTitle ?? "") { [weak self] result in
 			switch result {
 			case .success(let video):
 				guard let url = URL(string: "https://www.youtube.com/embed/\(video.id.videoId)") else {
@@ -144,6 +154,7 @@ final class MovieInfoViewController: UIViewController {
 				self?.webView.load(URLRequest(url: url))
 			case .failure(let error):
 				print("Failed to load search video: \(error)")
+				self?.showError(error)
 			}
 		}
 	}
@@ -154,6 +165,18 @@ final class MovieInfoViewController: UIViewController {
 	
 	func configureLabel(overview: String) {
 		movieOverviewContentLabel.text = overview
+	}
+}
+
+// MARK: - MovieInfoViewControllerDelegate
+
+extension MovieInfoViewController: MovieInfoViewControllerDelegate {
+	func showError(_ error: Error) {
+		let alert = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .alert)
+		alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
+			self.loadVideo()
+		}))
+		present(alert, animated: true)
 	}
 }
 

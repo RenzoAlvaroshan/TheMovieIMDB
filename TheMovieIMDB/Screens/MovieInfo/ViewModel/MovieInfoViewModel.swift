@@ -11,6 +11,8 @@ import RxRelay
 
 final class MovieInfoViewModel {
 	
+	weak var delegate: MovieInfoViewControllerDelegate?
+	
 	private let networkService: NetworkServiceProtocol
 	
 	private let disposeBag = DisposeBag()
@@ -23,6 +25,8 @@ final class MovieInfoViewModel {
 	init(networkService: NetworkServiceProtocol = NetworkService()) {
 		self.networkService = networkService
 	}
+	
+	// MARK: - Public Methods
 	
 	func searchVideo(for movieTitle: String, completion: @escaping (Result<VideoElement, Error>) -> Void) {
 		networkService.searchVideo(query: movieTitle + "trailer") { result in
@@ -37,6 +41,7 @@ final class MovieInfoViewModel {
 				self.userReviews.accept(reviews)
 			case .failure(let error):
 				print("Failed to getMovieReviews: \(error)")
+				self.delegate?.showError(error)
 			}
 		}
 	}
