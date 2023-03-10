@@ -6,7 +6,6 @@ target 'TheMovieIMDB' do
   use_frameworks!
 
   # Pods for TheMovieIMDB
-  pod 'IGListKit'
   pod 'Moya/RxSwift'
   pod 'RxCocoa'
   pod 'RxRelay'
@@ -17,11 +16,6 @@ target 'TheMovieIMDB' do
 
   target 'TheMovieIMDBTests' do
     inherit! :search_paths
-    # Pods for testing
-    pod 'RxTest'
-  end
-
-  target 'TheMovieIMDBUITests' do
     # Pods for testing
   end
 

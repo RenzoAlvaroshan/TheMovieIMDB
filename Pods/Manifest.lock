@@ -1,8 +1,5 @@
 PODS:
   - Alamofire (5.6.4)
-  - IGListDiffKit (4.0.0)
-  - IGListKit (4.0.0):
-    - IGListDiffKit (= 4.0.0)
   - Kingfisher (7.6.2)
   - Moya/Core (15.0.0):
     - Alamofire (~> 5.0)
@@ -15,19 +12,15 @@ PODS:
   - RxRelay (6.5.0):
     - RxSwift (= 6.5.0)
   - RxSwift (6.5.0)
-  - RxTest (6.5.0):
-    - RxSwift (= 6.5.0)
   - SkeletonView (1.30.4)
   - SnapKit (5.6.0)
   - youtube-ios-player-helper (1.0.4)
 
 DEPENDENCIES:
-  - IGListKit
   - Kingfisher
   - Moya/RxSwift
   - RxCocoa
   - RxRelay
-  - RxTest
   - SkeletonView
   - SnapKit
   - youtube-ios-player-helper
@@ -35,32 +28,26 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - Alamofire
-    - IGListDiffKit
-    - IGListKit
     - Kingfisher
     - Moya
     - RxCocoa
     - RxRelay
     - RxSwift
-    - RxTest
     - SkeletonView
     - SnapKit
     - youtube-ios-player-helper
 
 SPEC CHECKSUMS:
   Alamofire: 4e95d97098eacb88856099c4fc79b526a299e48c
-  IGListDiffKit: 665d6cf43ce726e676013db9c7d6c4294259b6b2
-  IGListKit: fd5a5d21935298f5849fa49d426843cff97b77c7
   Kingfisher: 6c5449c6450c5239166510ba04afe374a98afc4f
   Moya: 138f0573e53411fb3dc17016add0b748dfbd78ee
   RxCocoa: 94f817b71c07517321eb4f9ad299112ca8af743b
   RxRelay: 1de1523e604c72b6c68feadedd1af3b1b4d0ecbd
   RxSwift: 5710a9e6b17f3c3d6e40d6e559b9fa1e813b2ef8
-  RxTest: eb2d23adefc5a5ebf5779c7792fa3edfe6ebcc17
   SkeletonView: 5a050f6411e697abd4cda0a8d767013399dccd69
   SnapKit: e01d52ebb8ddbc333eefe2132acf85c8227d9c25
   youtube-ios-player-helper: e9b97535e816db3152179d84d999bc1807ecd689
 
-PODFILE CHECKSUM: c29659ab12a62b28d80bfec341be1f928a7b2b8b
+PODFILE CHECKSUM: 494cc4d6233a7031eca3c2f4930cb83597883418
 
 COCOAPODS: 1.11.3

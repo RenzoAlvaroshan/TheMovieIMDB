@@ -151,7 +151,9 @@ final class MovieInfoViewController: UIViewController {
 				guard let url = URL(string: "https://www.youtube.com/embed/\(video.id.videoId)") else {
 					return
 				}
-				self?.webView.load(URLRequest(url: url))
+				DispatchQueue.main.async {
+					self?.webView.load(URLRequest(url: url))
+				}
 			case .failure(let error):
 				self?.showError(error)
 			}
