@@ -15,8 +15,6 @@ final class MovieMainViewModel {
 	weak var delegate: MovieMainViewControllerDelegate?
 	
 	let movies: BehaviorRelay<[Movie]> = BehaviorRelay<[Movie]>(value: [])
-
-//	let adapter: ListAdapter? = nil
 	
 	private let networkService: NetworkServiceProtocol
 	private var currentPage = 1
@@ -42,7 +40,6 @@ final class MovieMainViewModel {
 				self.movies.accept(self.movies.value + movies)
 				self.currentPage = nextPage
 			case .failure(let error):
-//				print("Failed to load more movies: \(error)")
 				self.delegate?.showError(error)
 			}
 		}

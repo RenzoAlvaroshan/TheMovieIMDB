@@ -153,7 +153,6 @@ final class MovieInfoViewController: UIViewController {
 				}
 				self?.webView.load(URLRequest(url: url))
 			case .failure(let error):
-				print("Failed to load search video: \(error)")
 				self?.showError(error)
 			}
 		}
