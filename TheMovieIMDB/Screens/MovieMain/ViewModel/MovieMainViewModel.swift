@@ -42,7 +42,7 @@ final class MovieMainViewModel {
 				self.movies.accept(self.movies.value + movies)
 				self.currentPage = nextPage
 			case .failure(let error):
-				print("Failed to load more movies: \(error)")
+//				print("Failed to load more movies: \(error)")
 				self.delegate?.showError(error)
 			}
 		}

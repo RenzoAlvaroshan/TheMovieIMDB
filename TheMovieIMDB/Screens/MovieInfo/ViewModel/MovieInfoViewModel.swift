@@ -40,7 +40,6 @@ final class MovieInfoViewModel {
 			case .success(let reviews):
 				self.userReviews.accept(reviews)
 			case .failure(let error):
-				print("Failed to getMovieReviews: \(error)")
 				self.delegate?.showError(error)
 			}
 		}

@@ -13,11 +13,11 @@ struct YoutubeSearchResponse: Codable {
 	let items: [VideoElement]
 }
 
-struct VideoElement: Codable {
+struct VideoElement: Codable, Equatable {
 	let id: IdVideoElement
 }
 
-struct IdVideoElement: Codable {
+struct IdVideoElement: Codable, Equatable {
 	let kind: String
 	let videoId: String
 }
@@ -28,7 +28,7 @@ struct UserReviewsResponse: Codable {
 	let results: [UserReview]
 }
 
-struct UserReview: Codable {
+struct UserReview: Codable, Equatable {
 	let author: String
 	let content: String
 }
